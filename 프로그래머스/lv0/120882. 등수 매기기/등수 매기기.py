@@ -1,17 +1,9 @@
 def solution(score):
-    answer = [0] * len(score)
+    rank = sorted([sum(s)/2 for s in score], reverse = True)
+    rank_dict = dict()
     
-    avg_scores = [(i, (s[0]+s[1])/2) for i, s in enumerate(score)]
-    avg_scores.sort(key=lambda x: x[1], reverse=True)
-    avg_scores = dict(avg_scores)
-    scores = set(avg_scores.values())
-    scores = sorted(scores, reverse=True)
+    for i, v in enumerate(rank):
+        if v not in rank_dict.keys():
+            rank_dict[v] = i + 1
     
-    rank = 1
-    for score in scores:
-        temp = [k for k, v in avg_scores.items() if v == score]
-        for t in temp:
-            answer[t] = rank
-        rank += len(temp)
-        
-    return answer
+    return [rank_dict[sum(s) / 2] for s in score]
