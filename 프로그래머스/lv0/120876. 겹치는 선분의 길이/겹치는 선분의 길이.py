@@ -1,14 +1,15 @@
 def solution(lines):
     answer = 0
-    table = [set([]) for _ in range(200)]
-
-    for index, line in enumerate(lines):
+        
+    records = [set([]) for _ in range(200)]
+    
+    for idx, line in enumerate(lines):
         x1, x2 = line
-        for x in range(x1, x2):
-            table[x + 100].add(index)
-
-    for line in table:
-        if len(line) > 1:
+        for n in range(x1, x2):
+            records[n + 100].add(idx)
+    
+    for r in records:
+        if len(r) > 1:
             answer += 1
-
+    
     return answer
