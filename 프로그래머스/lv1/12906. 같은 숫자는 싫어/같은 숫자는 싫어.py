@@ -1,10 +1,6 @@
-from collections import deque
-
 def solution(arr):
-    arr = deque(arr)
-    answer = [arr.popleft()]
-    while len(arr) > 0:
-        num = arr.popleft()
-        if num != answer[-1]:
-            answer.append(num)
+    answer = [arr[0]]
+    for n in arr[1:]:
+        if n != answer[-1]:
+            answer.append(n)
     return answer
