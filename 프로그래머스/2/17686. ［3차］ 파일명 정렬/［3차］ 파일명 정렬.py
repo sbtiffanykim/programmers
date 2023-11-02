@@ -3,8 +3,7 @@ import re
 def solution(files):
     dic = dict()
     for idx, file in enumerate(files):
-        exp = re.compile('(\D+)(\d{1,5})(.*)')
-        t = exp.match(file)
+        t = re.match('(\D+)(\d{1,5})(.*)', file)
         head = t.group(1).lower()
         number = int(t.group(2))
         dic[file] = (head, number, idx)
