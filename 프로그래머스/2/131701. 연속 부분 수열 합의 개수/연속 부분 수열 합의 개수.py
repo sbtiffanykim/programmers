@@ -1,12 +1,12 @@
 def solution(elements):
-    sums = []
     n = len(elements)
-
-    for k in range(1, n+1):
-        for i in range(n):
-            end = i + k
-            if end >= n:
-                sums.append(sum(elements[i:])+sum(elements[:end % n]))
-            else:
-                sums.append(sum(elements[i:end]))
-    return len(set(sums))
+    sums = set()
+    
+    for i in range(n):
+        num = elements[i]
+        sums.add(num)
+        for j in range(i+1, i+n):
+            num += elements[j%n]
+            sums.add(num)
+    
+    return len(sums)
