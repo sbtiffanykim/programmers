@@ -25,7 +25,7 @@ def solution(s):
     for i in range(n):
         rotated_str = s
         if i > 0:
-            rotated_str = s[i:] + s[: (i + n) % n]  # 왼쪽으로 회전
+            rotated_str = s[i:] + s[:i]  # 왼쪽으로 회전
         if is_valid(rotated_str):  # 올바른 괄호 문자열이면
             answer += 1
             
